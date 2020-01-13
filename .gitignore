@@ -1,0 +1,10 @@
+dat/*
+exe/*
+log/*
+__pycache__
+.DS_Store
+*.zip
+*.hdf5
+*.pyc
+*.svg
+*.pdf
