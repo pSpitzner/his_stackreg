@@ -1,10 +1,21 @@
 # ------------------------------------------------------------------ #
-# Uses his_opener to load the first frame of each .HIS stack.
-# Then use stackreg to align them to the chosen reference image
-# and obtains the transformations to apply on provided extracted ROIs
+# Align ROIs (points) that were found on one dataset to the coordinate
+# system of another dataset (for instance, a day later)
+#
+# The script roughly does the following
+# * load reference .his file and compute the average
+# * load reference regions of interest
+# * export an overview of this (red)
+# * load each .his file that needs moving (registering)
+# * find the transformation that is needed to match the file to the reference
+# * apply the same transformation on the original ROIs
+# * export an overview of the match (blue)
+# * export the registered rois
+#
+# Hence, back in netcal, one can import the original .his stack without
+# alteration and load the ROIs produced by this script to get matching
+# ROIs across multi-day recordings.
 # ------------------------------------------------------------------ #
-
-import numpy as np
 
 # provide one image or his file as reference to which the others are aligned
 ref_img_file = "I:/PAUL/191218_3_div10_prestim.HIS"
@@ -47,10 +58,13 @@ mov_img_saveto = "D:/experiments/paul/register/dat/img/"
 
 # use only the first frame of each stack or compute an average. average takes longer
 # as the whole stack might have to be checked but produces much better results.
-# how many frames to draw for the whole stack (spread evenly from beginning to end)
 use_average = True
+
+# how many frames to draw from the whole stack (spread evenly from beginning to end)
 frames_for_average = 1000
 
+import numpy as np
+import utility as ut
 
 # load the regions of interest. we are using image coordinates!
 ref_roi_dat = np.loadtxt(ref_roi_file, delimiter=",", skiprows=1)
@@ -69,7 +83,6 @@ from skimage import transform as tf
 from skimage import exposure
 from pystackreg import StackReg  # pip install pystackreg
 
-import utility as ut
 import os
 import os.path as op
 from his_opener import HisOpener

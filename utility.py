@@ -40,7 +40,7 @@ def base_name(source_file, extension_delim="."):
 def save_rois(fname, roi_id, x, y, roi_width, img_width=1024):
     """
         save in the format that works with netcal (legacy): id | x | y | roi_width
-        netcal does not like floats fort the coordinates and
+        netcal does not like floats for the coordinates and
         comments have to be indicated with %
     """
     flagged = np.zeros_like(x, dtype=bool)
