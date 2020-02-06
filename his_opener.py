@@ -1,3 +1,10 @@
+# ------------------------------------------------------------------------------ #
+# @Author:        F. Paul Spitzner
+# @Email:         paul.spitzner@ds.mpg.de
+# @Created:       2020-01-17 15:42:14
+# @Last Modified: 2020-02-06 14:06:13
+# ------------------------------------------------------------------------------ #
+
 import struct
 import re
 import os
@@ -32,7 +39,7 @@ class HisOpener:
                 from his_opener import *
 
                 his_file = HisOpener(
-                    "~/owncloud/mpi/analysis/ub/dat/format_test_his.HIS",
+                    "~/testdir/testfile.HIS",
                     skip_consistency_check=False
                 )
 
@@ -177,7 +184,8 @@ class HisOpener:
         """
             Goes through some frames in the stack and checks the meta data size length.
             Creates a lookup table.
-            However, if (unluckily) the changes in meta data size exactly compensate, this will not work and we will not detect it.
+            However, if (unluckily) the changes in meta data size exactly compensate,
+            this will not work and we will not detect it.
             When in doubt, use check_consistency_slow()
         """
         print(f"Quick check of {self.file_path}")

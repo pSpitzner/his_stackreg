@@ -1,4 +1,9 @@
-# ------------------------------------------------------------------ #
+# ------------------------------------------------------------------------------ #
+# @Author:        F. Paul Spitzner
+# @Email:         paul.spitzner@ds.mpg.de
+# @Created:       2020-01-13 19:14:56
+# @Last Modified: 2020-02-06 13:49:16
+# ------------------------------------------------------------------------------ #
 # Align ROIs (points) that were found on one dataset to the coordinate
 # system of another dataset (for instance, a day later)
 #
@@ -15,7 +20,7 @@
 # Hence, back in netcal, one can import the original .his stack without
 # alteration and load the ROIs produced by this script to get matching
 # ROIs across multi-day recordings.
-# ------------------------------------------------------------------ #
+# ------------------------------------------------------------------------------ #
 
 # provide one image or his file as reference to which the others are aligned
 ref_img_file = "I:/PAUL/191218_3_div10_prestim.HIS"
